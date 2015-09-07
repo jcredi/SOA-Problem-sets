@@ -6,7 +6,12 @@ function [newValue] = NewtonRaphsonStep(currentValue, firstDerivative, secondDer
 newValue = currentValue - firstDerivative/secondDerivative;
 
 if isinf(newValue) || isnan(newValue)
-  fprintf('ERROR in function NewtonRaphsonStep.m : new candidate value is NaN or Inf.\n');
+  fprintf('ERROR in function NewtonRaphsonStep.m : second derivative is zero.\n');
+  newValue = nan;
+  return
+elseif isnan(newValue)
+  fprintf('ERROR in function NewtonRaphsonStep.m : new candidate value is NaN.\n');
+  return  
 end
 
 end

@@ -12,20 +12,17 @@ if nargin < 2
 end
 
 nPoints = 1000; % number of points of the polynomial curve to plot
-
-% setting appropriate x-limits for the plots
 minX = min(iterationValues);
 maxX = max(iterationValues);
+% setting appropriate 
 xLim1 = minX - 0.15*(maxX-minX);
 xLim2 = maxX + 0.15*(maxX-minX);
 deltaX = (xLim2 - xLim1) / nPoints;
 xPoints = xLim1:deltaX:xLim2;
 
-% computing corresponding y-values
 yPoints = Polynomial(polynomialCoefficients, xPoints);
 polyIterationValues = Polynomial(polynomialCoefficients,iterationValues);
 
-% plotting
 curveHandle = plot(xPoints, yPoints);
 hold on
 pointsHandle = plot(iterationValues, polyIterationValues,'ro');
