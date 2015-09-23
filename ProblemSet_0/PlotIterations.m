@@ -31,5 +31,8 @@ hold on
 pointsHandle = plot(iterationValues, polyIterationValues,'ro');
 hold off
 set(gcf,'color','w')
+xlabel('x');
+ylabel('f(x)');
+legend([curveHandle, pointsHandle], 'Polynomial curve', 'Newton-Raphson iterates');
 
 end
