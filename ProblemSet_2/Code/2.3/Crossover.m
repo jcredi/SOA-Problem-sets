@@ -16,7 +16,7 @@ for i = 1:size(weightsInputToHidden1,1)
   for j = 1:size(weightsInputToHidden1,2)
     weight1 = weightsInputToHidden1(i,j);
     weight2 = weightsInputToHidden2(i,j);
-    alpha = minAlpha + rand*deltaAlpha; % ALSO TRY SAMPLING OUTSIDE THE LOOP!
+    alpha = minAlpha + rand*deltaAlpha; % must be resampled for EACH variable!
 
     newWeight = weight1 + alpha*(weight2-weight1);
     offspringInputToHidden(i,j) = newWeight;
@@ -27,7 +27,7 @@ for i = 1:size(weightsHiddenToOutput1,1)
   for j = 1:size(weightsHiddenToOutput1,2)
     weight1 = weightsHiddenToOutput1(i,j);
     weight2 = weightsHiddenToOutput2(i,j);
-    alpha = minAlpha + rand*deltaAlpha; % ALSO TRY SAMPLING OUTSIDE THE LOOP!
+    alpha = minAlpha + rand*deltaAlpha; % must be resampled for EACH variable!
 
     newWeight = weight1 + alpha*(weight2-weight1);
     offspringHiddenToOutput(i,j) = newWeight;

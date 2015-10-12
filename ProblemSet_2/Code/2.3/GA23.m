@@ -9,7 +9,7 @@ weightsRange = [-1, 1];
 
 % Genetic algorithm parameters
 populationSize = 100;
-numberOfGenerations = 50;
+maxNumberOfGenerations = 50;
 tournamentSelectionParameter = 0.8;
 tournamentSize = 3;
 crossoverProbability = 0.8;
@@ -21,17 +21,21 @@ elitismCopies = 1;
 % Initialisations
 fitnessTraining = zeros(populationSize,1);
 fitnessValidation = zeros(populationSize,1);
-maximumFitnessTraining = zeros(1,numberOfGenerations);
-averageFitnessTraining = zeros(1,numberOfGenerations);
+%maximumFitnessTraining = zeros(1,numberOfGenerations);
+%averageFitnessTraining = zeros(1,numberOfGenerations);
 %maximumFitnessValidation = zeros(1,numberOfGenerations);
-averageFitnessValidation = zeros(1,numberOfGenerations);
+%averageFitnessValidation = zeros(1,numberOfGenerations);
 population = InitializePopulation(nInput, nHidden, nOutput, ...
   populationSize, weightsRange);
+isStoppingFlagOff = true;
 
 % Main GA loop
+iGeneration = 0;
 h = waitbar(0,'Running GA - please wait...');
-for iGeneration = 1:numberOfGenerations
+while iGeneration < maxNumberOfGenerations
 
+  iGeneration = iGeneration + 1;
+  
   % Evaluation  
   for i = 1:populationSize
     neuralNetwork = population(i,:);
@@ -43,9 +47,13 @@ for iGeneration = 1:numberOfGenerations
   averageFitnessTraining(iGeneration) = mean(fitnessTraining);
   averageFitnessValidation(iGeneration) = mean(fitnessValidation);
   
-  if averageFitnessValidation(iGeneration) < averageFitnessTraining(iGeneration)
-    disp('Training stopped. Risk of overfitting if continuing');
-    break
+  if iGeneration > 1
+    if averageFitnessValidation(iGeneration) < averageFitnessValidation(iGeneration-1) && isStoppingFlagOff
+      savedBestNetwork = bestNetwork;
+      disp('Fitness of validation set decreasing! Training will continue 5 more generations and then stop.');
+      maxNumberOfGenerations = iGeneration + 5;
+      isStoppingFlagOff = false;
+    end
   end
   
   tempPopulation = population;
@@ -61,7 +69,8 @@ for iGeneration = 1:numberOfGenerations
     selectedNetwork1 = population(i1,:);
     selectedNetwork2 = population(i2,:);
     
-    % Crossover
+    % Crossover 
+    % TO-DO: try discrete crossover
     r = rand;
     if (r < crossoverProbability)
       offspringNetwork = Crossover(selectedNetwork1,selectedNetwork2,...
@@ -81,11 +90,18 @@ for iGeneration = 1:numberOfGenerations
   end
   
   population = tempPopulation;
-  waitbar(iGeneration/numberOfGenerations,h);
+  waitbar(iGeneration/maxNumberOfGenerations,h);
+  
+  plot(averageFitnessTraining)
+  hold on
+  plot(averageFitnessValidation)
+  hold off
+  
 end % end loop over generations
 close(h);
 
 plot(averageFitnessTraining)
 hold on
 plot(averageFitnessValidation)
+hold off
 
