@@ -1,4 +1,4 @@
-function population = InitializePopulation(populationSize,minChromosomeLength,maxChromosomeLength);
+function population = InitializePopulation(populationSize,minChromosomeLength,maxChromosomeLength)
 
 population = [];
 for i = 1:populationSize
