@@ -1,15 +1,19 @@
 function [pedalPressure,requestedGear] = RunFFNN(neuralNetwork, input1,...
-    input2, input3, activationFunction)
+    input2, input3)
 
-weightsInputToHidden = neuralNetwork{1};
-weightsHiddenToOutput = neuralNetwork{2};
-
+weightsInputHidden = neuralNetwork{1};
+weightsHiddenOutput = neuralNetwork{2};
+nHidden = size(weightsInputHidden,1);
+nOutput = 2;
 inputState = [input1; input2; input3; -1]; % including dummy neuron for threshold
 
-hiddenState = activationFunction(weightsInputToHidden*inputState);
+%beta = 1;
+activationFunction = @(x) 1./(1+exp(-bx));
+
+hiddenState = activationFunction(weightsInputHidden*inputState);
 hiddenState = [hiddenState; -1]; % add dummy
 
-outputState = activationFunction(weightsHiddenToOutput*hiddenState);
+outputState = activationFunction(weightsHiddenOutput*hiddenState);
 
 pedalPressure = outputState(1);
 if outputState(2) < 0.3

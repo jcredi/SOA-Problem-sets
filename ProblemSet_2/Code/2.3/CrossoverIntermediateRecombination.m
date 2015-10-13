@@ -1,5 +1,5 @@
-function offspringNetwork = Crossover(selectedNetwork1,selectedNetwork2, ...
-    intermediateRecombinationRange)
+function offspringNetwork = CrossoverIntermediateRecombination(...
+    selectedNetwork1,selectedNetwork2,intermediateRecombinationRange)
 
 weightsInputToHidden1 = selectedNetwork1{1};
 weightsInputToHidden2 = selectedNetwork2{1};

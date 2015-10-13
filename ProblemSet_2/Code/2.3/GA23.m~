@@ -4,20 +4,20 @@ close all
 
 % Feed-forward neural network parameters
 nInput = 3;
-nHidden = 5;
+nHidden = 8;
 nOutput = 2;
 weightsRange = [-1, 1];
 
 % Genetic algorithm parameters
-populationSize = 100;
+populationSize = 20;
 maxNumberOfGenerations = 50;
 tournamentSelectionParameter = 0.8;
-tournamentSize = 2;
+tournamentSize = 3;
 crossoverProbability = 0.8;
 d = 0.25;
 intermediateRecombinationRange = [-d, 1+d]; 
 mutationProbability = 1/(nHidden*(nInput+1)+nOutput*(nHidden+1)); % 2 genes mutate per individual, on average
-creepMutationParameter = 0.2;
+creepMutationParameter = 0.1;
 elitismCopies = 1;
 
 % Initialisations
@@ -47,10 +47,10 @@ while iGeneration < maxNumberOfGenerations
   end
   [maximumFitnessTraining(iGeneration), iBestNetwork] = max(fitnessTraining);
   bestNetwork(iGeneration,:) = population(iBestNetwork,:);
-%   averageFitnessTraining(iGeneration) = mean(fitnessTraining);
-%   averageFitnessValidation(iGeneration) = mean(fitnessValidation);
+  averageFitnessTraining(iGeneration) = mean(fitnessTraining);
+  averageFitnessValidation(iGeneration) = mean(fitnessValidation);
   maximumFitnessTraining(iGeneration) = max(fitnessTraining);
-  maximumFitnessValidation(iGeneration) = max(fitnessValidation);
+  maximumFitnessValidation(iGeneration) = mean(fitnessValidation);
   
   plot(maximumFitnessTraining)
   hold on
@@ -101,6 +101,13 @@ while iGeneration < maxNumberOfGenerations
   
   population = tempPopulation;
   waitbar(iGeneration/maxNumberOfGenerations,h);
+  
+%   plot(averageFitnessTraining)
+%   hold on
+%   plot(averageFitnessValidation)
+%   hold off
+
+
   toc
   
 end % end loop over generations

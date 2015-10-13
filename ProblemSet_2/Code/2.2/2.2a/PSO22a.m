@@ -56,6 +56,9 @@ for iIteration = 1:maxIterations
   
   inertiaWeight = UpdateInertiaWeight(inertiaWeight,...
     inertiaWeightDecreaseRate,minInertiaWeight);
+
+  quiver(positions(:,1),positions(:,2),velocities(:,1),velocities(:,2))
+  pause(0.01);
 end
 
 if iIteration == maxIterations

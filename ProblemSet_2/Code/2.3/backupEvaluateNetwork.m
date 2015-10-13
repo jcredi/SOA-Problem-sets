@@ -1,8 +1,9 @@
-function networkFitness = EvaluateNetwork(neuralNetwork, iDataSet)
-%EvaluateNetwork
+function networkFitness = backupEvaluateNetwork(neuralNetwork, iDataSet)
+%BackupEvaluateNetwork evaluates network using either training or validation set
 
 % Parameters to experiment with
 timeStep = 0.1;
+initialPedalPressure = 0;
 
 % Truck model parameters
 ambientTemperature = 283;
@@ -18,7 +19,6 @@ initialSpeed = 20;
 initialGear = 7;
 initialPosition = 0;
 finalPosition = 1000;
-initialPedalPressure = 0;
 bonusForCompletion = 1;
 beta = 1;
 activationFunction = @(x) 1./(1+exp(-beta*x));
@@ -72,7 +72,6 @@ for iSlope = 1:nSlopes
       isTruckOk = false;
       break
     elseif newSpeed < 0
-      %bonusForCompletion = 0.5;
       %fprintf('Slope %i of dataset %i failed (truck stopped!!).\n',iSlope, iDataSet);
       break
     end
@@ -118,10 +117,9 @@ for iSlope = 1:nSlopes
   end % end truck run
 
   fitnessInSlopes(iSlope) = bonusForCompletion*sqrt(mean(speed))*position(end);
-%   figureHandle = PlotData(position, pedalPressure, gear, speed, ...
-%     brakeTemperature);
-%   pause;
-%   close all;
+  %figureHandle = PlotData(position, pedalPressure, gear, speed, ...
+    %brakeTemperature);
+  %pause;
 end % end loop over different slopes
 
 networkFitness = mean(fitnessInSlopes);

@@ -12,8 +12,8 @@ numberOfGenerations = 1000;
 elitismCopies = 1;
 mutationProbability = 1/(nCities);
 tournamentSelectionParameter = 0.8;
-tournamentSize = 2;
-nInitialSwapMutations = 2;
+tournamentSize = 5;
+nInitialSwapMutations = 3;
 
 % Initialisations
 fitness = zeros(populationSize,1);
