@@ -4,9 +4,8 @@ nNodes = length(tabuList);
 remainingNodes = 1:nNodes;
 remainingNodes(tabuList) = [];
 
-
-probabilities = pheromoneLevel(remainingNodes,currentNode).^beta ...
-.* visibility(remainingNodes,currentNode).^alpha;
+probabilities = pheromoneLevel(remainingNodes,currentNode).^beta .* ...
+  visibility(remainingNodes,currentNode).^alpha;
 if all(probabilities) == 0
   iNode = randi(numel(remainingNodes));
   nextNode = remainingNodes(iNode);

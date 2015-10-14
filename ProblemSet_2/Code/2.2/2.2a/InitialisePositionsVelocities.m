@@ -1,5 +1,5 @@
-function [positions, velocities] = InitialisePositionsVelocities(swarmSize,...
-  spaceDimension, xMin, xMax, alpha, deltaT)
+function [positions, velocities] = InitialisePositionsVelocities(...
+  swarmSize, spaceDimension, xMin, xMax, alpha, deltaT)
 
 xRange = xMax-xMin;
 

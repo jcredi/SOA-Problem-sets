@@ -10,9 +10,9 @@ nCities = size(cityLocation,1);
 populationSize = 100;
 numberOfGenerations = 1000;
 elitismCopies = 1;
-mutationProbability = 1/(5*nCities);
+mutationProbability = 1/(3*nCities);
 tournamentSelectionParameter = 0.8;
-tournamentSize = 3;
+tournamentSize = 5;
 
 % Initialisations
 fitness = zeros(populationSize,1);

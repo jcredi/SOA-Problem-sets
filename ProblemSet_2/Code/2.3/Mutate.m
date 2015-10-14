@@ -1,5 +1,5 @@
 function mutatedNetwork = Mutate(originalNetwork,mutationProbability,...
-        creepMutationParameter)
+  creepMutationProbability, creepRate, weightsRange)
 
 originalInputToHidden = originalNetwork{1};
 originalHiddenToOutput = originalNetwork{2};
@@ -12,8 +12,11 @@ for i = 1:size(originalInputToHidden,1)
     if r < mutationProbability
       originalWeight = originalInputToHidden(i,j);
       q = rand;
-      creepMutation = -creepMutationParameter+2*q*creepMutationParameter;
-      mutatedWeight = originalWeight + creepMutation;
+      if q < creepMutationProbability % creep mutation
+        mutatedWeight = originalWeight + creepRate*weightsRange*(rand-0.5);
+      else % full range mutation
+        mutatedWeight = -weightsRange/2 + rand*weightsRange;    
+      end
       mutatedInputToHidden(i,j) = mutatedWeight;
     end
   end
@@ -25,8 +28,11 @@ for i = 1:size(originalHiddenToOutput,1)
     if r < mutationProbability
       originalWeight = originalHiddenToOutput(i,j);
       q = rand;
-      creepMutation = -creepMutationParameter+2*q*creepMutationParameter;
-      mutatedWeight = originalWeight + creepMutation;
+      if q < creepMutationProbability % creep mutation
+        mutatedWeight = originalWeight + creepRate*weightsRange*(rand-0.5);
+      else % full range mutation
+        mutatedWeight = -weightsRange/2 + rand*weightsRange;    
+      end
       mutatedHiddenToOutput(i,j) = mutatedWeight;
     end
   end

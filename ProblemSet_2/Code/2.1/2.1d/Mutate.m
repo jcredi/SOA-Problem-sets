@@ -10,4 +10,5 @@ for iGene = 1:nGenes
     mutatedChromosome(iSwap) = mutatedChromosome(iGene);
     mutatedChromosome(iGene) = tmp;
   end
+  
 end

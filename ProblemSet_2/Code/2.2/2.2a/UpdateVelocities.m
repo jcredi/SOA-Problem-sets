@@ -1,24 +1,20 @@
-function velocities = UpdateVelocities(velocities,positions,inertiaWeight,...
-  c1,c2,particleBest,swarmBest,deltaT,crazinessProbability,maximumVelocity)
+function velocities = UpdateVelocities(velocities,positions,...
+  inertiaWeight,c1,c2,particleBest,swarmBest,deltaT,maximumVelocity)
 
-[swarmSize, spaceDimension] = size(positions);
+swarmSize = size(positions,1);
 
 for iParticle = 1:swarmSize
-  r = rand;
-  if r < crazinessProbability
-    tmpRand = rand(1,spaceDimension);
-    velocities(iParticle,:) = -maximumVelocity + 2*tmpRand.*maximumVelocity;
-  else
-    inertiaTerm = inertiaWeight*velocities(iParticle,:);
-    particleBestTerm = c1/deltaT*rand*(particleBest(iParticle,1:end-1)-positions(iParticle,:));
-    swarmBestTerm = c2/deltaT*rand*(swarmBest(end,1:end-1)-positions(iParticle,:));
-    tmpVelocities = inertiaTerm + particleBestTerm + swarmBestTerm;
+  inertiaTerm = inertiaWeight*velocities(iParticle,:);
+  particleBestTerm = c1/deltaT*rand*(particleBest(iParticle,1:end-1)-...
+    positions(iParticle,:));
+  swarmBestTerm = c2/deltaT*rand*(swarmBest(end,1:end-1)-positions(...
+    iParticle,:));
+  tmpVelocity = inertiaTerm + particleBestTerm + swarmBestTerm;
     
-    tmpVelocities(tmpVelocities > maximumVelocity) = maximumVelocity;
-    tmpVelocities(tmpVelocities < -maximumVelocity) = -maximumVelocity;
+  tmpVelocity(tmpVelocity > maximumVelocity) = maximumVelocity;
+  tmpVelocity(tmpVelocity < -maximumVelocity) = -maximumVelocity;
     
-    velocities(iParticle,:) = tmpVelocities;
-  end
+  velocities(iParticle,:) = tmpVelocity;
 end
     
 end

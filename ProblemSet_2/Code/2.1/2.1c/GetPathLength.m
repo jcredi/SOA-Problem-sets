@@ -14,7 +14,7 @@ end
 % Back to first city
 cityA = cityLocation(path(end),:);
 cityB = cityLocation(path(1),:);
-roadLength = pdist([cityA; cityB]);
+roadLength = sqrt((cityA(1)-cityB(1))^2+(cityA(2)-cityB(2))^2);
 pathLength = pathLength + roadLength;
 
 end

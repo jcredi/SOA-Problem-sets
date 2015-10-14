@@ -1,4 +1,4 @@
-function networkFitness = EvaluateNetwork(neuralNetwork, iDataSet)
+function networkFitness = EvaluateNetworkPlot(neuralNetwork, iDataSet)
 %EvaluateNetwork
 
 % Parameters to experiment with
@@ -117,11 +117,13 @@ for iSlope = 1:nSlopes
     end
   end % end truck run
 
-  % bonusFitness*
-  fitnessInSlopes(iSlope) = sqrt(mean(speed))*position(end);
-
+  fitnessInSlopes(iSlope) = bonusFitness*sqrt(mean(speed))*position(end);
+  figureHandle = PlotData(position, pedalPressure, gear, speed, ...
+    brakeTemperature);
+  pause;
+  close all;
 end % end loop over different slopes
 
-networkFitness = mean(fitnessInSlopes);
+networkFitness = mean(fitnessInSlopes)
 
 end

@@ -16,10 +16,4 @@ for i = 2:nNodes
   currentNode = nextNode;
 end
 
-if any(path) == 0
-  save('errorWorkspace');
-  error('Path contains a zero');
-end
-
-
 end
