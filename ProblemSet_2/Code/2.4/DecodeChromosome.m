@@ -20,8 +20,15 @@ for iInstruction = 1:nInstructions
     idOperand2 = idOperand2 - nVariableRegisters;
     tmpOperand2 = ['constantRegisters(',num2str(idOperand2),')']; 
   end
-  
+ 
   tmpInstruction = [tmpDestination,'=',tmpOperand1,tmpOperator,tmpOperand2,';'];
+  
+  if tmpOperator == '/'; % protected division
+    ifCondition = ['if ', tmpOperand2, ' ~= 0, '];
+    elseStatement = [' else, ', tmpDestination, ' = cMax; end'];
+    tmpInstruction = [ifCondition, tmpInstruction, elseStatement];
+  end
+  
   instructions{iInstruction} = tmpInstruction;
 end
 

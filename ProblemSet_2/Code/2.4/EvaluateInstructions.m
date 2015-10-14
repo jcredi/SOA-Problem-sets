@@ -1,6 +1,7 @@
 function functionValue = EvaluateInstructions(instructions, xValue,...
-    variableRegisters, constantRegisters)
+    nVariableRegisters, constantRegisters, cMax)
 
+variableRegisters = zeros(1,nVariableRegisters);
 variableRegisters(1) = xValue;
 nInstructions = length(instructions);
 

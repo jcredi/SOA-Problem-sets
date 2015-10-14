@@ -5,7 +5,6 @@ set(figureHandle, 'DoubleBuffer','on');
 set(figureHandle, 'Position', [200,180,680,640], 'Color','w');
 hold on;
 
-set(gcf,'color','w');
 minLengthFigure = plot(1:numberOfGenerations, nan(1,numberOfGenerations),'LineWidth',1.5);
 xlim([1 numberOfGenerations]);
 xlabel('Generation');

@@ -13,6 +13,3 @@ yData = functionData(:,2);
 population = InitializePopulation(populationSize,...
     minChromosomeLength,maxChromosomeLength, nVariableRegisters,...
     nConstantRegisters);
-
-
-eval('x=1;');
