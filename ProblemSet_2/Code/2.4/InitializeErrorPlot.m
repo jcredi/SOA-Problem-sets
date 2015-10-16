@@ -5,7 +5,6 @@ set(figureHandle, 'DoubleBuffer','on','Color','w');
 hold on;
 
 errorPlotHandle = plot(nan, nan,'LineWidth',1.5);
-%xlim([1 numberOfGenerations]);
 xlabel('Generation');
 ylabel('Error of best individual');
 set(gca, 'FontSize', 16);

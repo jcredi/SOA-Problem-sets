@@ -1,7 +1,7 @@
 function mutatedChromosome = Mutate(originalChromosome,mutationProbability,...
   nVariableRegisters, nConstantRegisters)
 
-nInstructions = size(originalChromosome,2);
+nInstructions = size(originalChromosome,1);
 nOperators = 4; % assumes basic operators {+,-,*,/}
 nRegisters = nVariableRegisters + nConstantRegisters;
 
@@ -18,6 +18,7 @@ for i = 1:nInstructions
           mutatedChromosome(i,j) = randi(nVariableRegisters);
         otherwise
           mutatedChromosome(i,j) = randi(nRegisters);
+          
       end
     end
   end

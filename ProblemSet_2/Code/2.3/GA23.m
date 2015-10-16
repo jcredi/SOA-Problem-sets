@@ -10,33 +10,29 @@ weightsMinMax = [-10, 10];
 weightRange = diff(weightsMinMax);
 
 % Genetic algorithm parameters
-populationSize = 50;
+populationSize = 10;
 maxNumberOfGenerations = 100;
 tournamentSelectionParameter = 0.8;
 tournamentSize = 3;
 nGenes = (nHidden*(nInput+1)+nOutput*(nHidden+1));
 mutationProbability = 1/nGenes;
-creepMutationProbability = 0.8;%0.8;
+creepMutationProbability = 0.8;
 creepRate = 0.2; % expressed in percentage of the weight range
 elitismCopies = 1;
 
 % Initialisations
 fitnessTraining = zeros(populationSize,1);
 fitnessValidation = zeros(populationSize,1);
-%maximumFitnessTraining = zeros(1,numberOfGenerations);
-%averageFitnessTraining = zeros(1,numberOfGenerations);
-%maximumFitnessValidation = zeros(1,numberOfGenerations);
-%averageFitnessValidation = zeros(1,numberOfGenerations);
 population = InitializePopulation(nInput, nHidden, nOutput, ...
   populationSize, weightsMinMax);
 isStoppingFlagOff = true;
 
 % Main GA loop
 iGeneration = 0;
-h = waitbar(0,'Running GA - please wait...');
+% h = waitbar(0,'Running GA - please wait...');
 while iGeneration < maxNumberOfGenerations
   
-  tic  
+%   tic  
   iGeneration = iGeneration + 1;
   
   %% Evaluation  
@@ -53,15 +49,15 @@ while iGeneration < maxNumberOfGenerations
   averageFitnessValidation(iGeneration) = mean(fitnessValidation);
   
   %% Plot
-  maxTrainingPlot = plot(maximumFitnessTraining);
-  hold on
-  maxValidationPlot = plot(maximumFitnessValidation);
-  avgTrainingPlot = plot(averageFitnessTraining);
-  avgValidationPlot = plot(averageFitnessValidation);
-  legend('Max fitness training','Max fitness validation', ...
-    'Average fitness training', 'Average fitness validation','Location',...
-    'SouthEast');
-  hold off 
+%   maxTrainingPlot = plot(maximumFitnessTraining);
+%   hold on
+%   maxValidationPlot = plot(maximumFitnessValidation);
+%   avgTrainingPlot = plot(averageFitnessTraining);
+%   avgValidationPlot = plot(averageFitnessValidation);
+%   legend('Max fitness training','Max fitness validation', ...
+%     'Average fitness training', 'Average fitness validation','Location',...
+%     'SouthEast');
+%   hold off 
   
   %% Selection
   tempPopulation = population;
@@ -84,21 +80,23 @@ while iGeneration < maxNumberOfGenerations
     population(iBestNetworkTraining,:), elitismCopies);
   
   population = tempPopulation;
-  waitbar(iGeneration/maxNumberOfGenerations,h);
-  toc
+%   waitbar(iGeneration/maxNumberOfGenerations,h);
+%   toc
   
 end % end loop over generations
-close(h);
+% close(h);
 
 %% Final plot
-maxTrainingPlot = plot(maximumFitnessTraining);
-hold on
-maxValidationPlot = plot(maximumFitnessValidation);
-avgTrainingPlot = plot(averageFitnessTraining);
-avgValidationPlot = plot(averageFitnessValidation);
-legend('Max fitness training','Max fitness validation', ...
-'Average fitness training', 'Average firness validation');
-hold off 
+% maxTrainingPlot = plot(maximumFitnessTraining);
+% hold on
+% maxValidationPlot = plot(maximumFitnessValidation);
+% avgTrainingPlot = plot(averageFitnessTraining);
+% avgValidationPlot = plot(averageFitnessValidation);
+% legend('Max fitness training','Max fitness validation', ...
+% 'Average fitness training', 'Average firness validation');
+% hold off 
 
-myBestNetwork1 = bestNetworkTraining(end,:);
-myBestNetwork2 = bestNetworkValidation(end,:);
+myBestNetworkTraining = bestNetworkTraining(end,:);
+myBestNetworkValidation = bestNetworkValidation(end,:);
+
+save('run1');

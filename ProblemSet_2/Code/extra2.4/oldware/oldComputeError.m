@@ -1,13 +1,15 @@
 function functionError = ComputeError(chromosome, xData, yData, ...
-  nVariableRegisters, constantRegisters, cMax)
+  operatorsSet, nVariableRegisters, constantRegisters, cMax)
 
 nDataPoints = length(xData);
 functionEstimates = NaN(nDataPoints,1);
 
+instructions = DecodeChromosome(chromosome,operatorsSet,nVariableRegisters);
+
 for iData = 1:nDataPoints
   xValue = xData(iData);  
-  functionEstimates(iData) = EvaluateChromosome(chromosome, xValue, ...
-    nVariableRegisters, constantRegisters, cMax);
+  functionEstimates(iData) = EvaluateInstructions(instructions, xValue, ...
+  nVariableRegisters, constantRegisters, cMax);
 end
 
 errorValues = (functionEstimates - yData).^2;

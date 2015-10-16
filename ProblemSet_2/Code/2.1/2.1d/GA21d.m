@@ -8,25 +8,23 @@ nCities = size(cityLocation,1);
 
 % GA parameters
 populationSize = 100;
-numberOfGenerations = 1000;
-elitismCopies = 1;
-mutationProbability = 1/(nCities);
+numberOfGenerations = 10000;
+mutationProbability = 2/(nCities);
 tournamentSelectionParameter = 0.8;
 tournamentSize = 5;
+elitismCopies = 1;
 nInitialSwapMutations = 3;
 
 % Initialisations
 fitness = zeros(populationSize,1);
 maximumFitness = 0.0;
 population = InitializePopulation21d(populationSize,nCities,cityLocation,nInitialSwapMutations);
-
-% Initialise graphics
 [minLengthFigure, textHandle] = InitialiseMinLengthPlot(numberOfGenerations);
 tspFigure = InitializeTspPlot(cityLocation,[0 20 0 20]);
 set(tspFigure, 'Position', [1000,180,680,640], 'Color','w');
 connection = InitializeConnections(cityLocation); 
-disp('Running GA...');
 
+disp('Running GA...'); tic;
 for iGeneration = 1:numberOfGenerations
     
   for iChromosome = 1:populationSize
@@ -36,7 +34,8 @@ for iGeneration = 1:numberOfGenerations
   [maximumFitness, iBestChromosome] = max(fitness);
   bestChromosome = population(iBestChromosome,:);
   
-  UpdateMinLengthPlot(iGeneration, minLengthFigure, textHandle, 1/maximumFitness);
+  shortestPath = 1/maximumFitness;
+  UpdateMinLengthPlot(iGeneration, minLengthFigure, textHandle, shortestPath);
   PlotPath(connection,cityLocation,bestChromosome);
 
   tempPopulation = population;
@@ -55,3 +54,5 @@ for iGeneration = 1:numberOfGenerations
   population = tempPopulation;
 
 end % Loop over generations
+fprintf('  %i generations completed in %4.3f seconds.',numberOfGenerations,toc);
+fprintf('\n\nLength of best path found: %4.3f\n',shortestPath);

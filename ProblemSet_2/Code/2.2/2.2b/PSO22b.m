@@ -44,7 +44,7 @@ for iIteration = 1:maxIterations
   functionValues = EvaluateParticles(integerPositions, functionToMinimise);
   
   [particleBest,swarmBest] = UpdateBestPositions(particleBest,swarmBest,...
-    integerPositions,functionValues);
+    positions,functionValues);
 
   velocities = UpdateVelocities(velocities,positions,inertiaWeight,c1,...
     c2,particleBest,swarmBest,deltaT,maximumVelocity);
@@ -55,8 +55,9 @@ for iIteration = 1:maxIterations
 end
 
 fprintf('\n  %i iterations completed in %4.3f seconds.',iIteration,toc);
+finalMinimum = round(swarmBest(end,:));
 fprintf('\n\nMinimum: %i at point (%i, %i, %i, %i, %i)^T.\n',...
-  swarmBest(end,end),swarmBest(end,1),swarmBest(end,2),swarmBest(end,3),...
-  swarmBest(end,4),swarmBest(end,5));
+  swarmBest(end,end), finalMinimum(1),finalMinimum(2),finalMinimum(3),...
+  finalMinimum(4), finalMinimum(5));
 
 

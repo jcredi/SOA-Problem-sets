@@ -21,7 +21,7 @@ finalPosition = 1000;
 initialPedalPressure = 0;
 bonusFitness = 1;
 beta = 1;
-activationFunction = @(x) 1./(1+exp(-beta*x));
+activationFunction = @(x) 1./(1+exp(-beta.*x));
 engineBreakMultipliers = [7.0, 5.0, 4.0, 3.0, 2.5, 2.0, 1.6, 1.4, 1.2, 1.0];
 g = 9.8067;
 
@@ -124,6 +124,6 @@ for iSlope = 1:nSlopes
   close all;
 end % end loop over different slopes
 
-networkFitness = mean(fitnessInSlopes)
+networkFitness = mean(fitnessInSlopes);
 
 end

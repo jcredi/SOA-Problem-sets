@@ -4,13 +4,13 @@ close all
 
 %% Parameters
 populationSize = 100;
-numberOfGenerations = 2000;
+numberOfGenerations = 10000;
 tournamentSize = 5;
 tournamentSelectionParameter = 0.75;
-crossoverProbability = 0.2;
-mutationProbability = 0.01;
+crossoverProbability = 0.33;
+mutationProbability = 0.03;
 elitismCopies = 1;
-outputFileName = 'run2000_02_001.mat';
+outputFileName = 'run10000_033_003.mat';
 
 nVariableRegisters = 3; % M
 nConstantRegisters = 3; % N
@@ -31,7 +31,6 @@ maximumFitness = zeros(numberOfGenerations,1);
 % errorPlot = animatedline;
 
 % Main LGP loop
-h = waitbar(0,'Running GA - please wait...');
 for iGeneration = 1:numberOfGenerations
   
   %% Evaluation  
@@ -44,14 +43,8 @@ for iGeneration = 1:numberOfGenerations
   [maximumFitness(iGeneration), iBestChromosome] = max(fitness);
   bestChromosome = population(iBestChromosome).Chromosome;
   
-  %% Plot error
+  %% Update error
   minError(iGeneration) = 1/maximumFitness(iGeneration);
-  if iGeneration >1 && minError(iGeneration) < minError(iGeneration-1)
-    fprintf('\nNew min error found: %4.5f at iteration %i',minError(iGeneration),iGeneration);
-  end
-  %maxTrainingPlot = plot(minError,'LineWidth',1.5);
-%   addpoints(errorPlot,iGeneration,minError(iGeneration));
-%   drawnow limitrate;
   
   %% Tournament selection and 2-pt crossover
   tempPopulation = population;
@@ -88,9 +81,7 @@ for iGeneration = 1:numberOfGenerations
 
   population = tempPopulation;
 
-  waitbar(iGeneration/numberOfGenerations,h);
 end
-close(h);
 
 finalMinError = minError(end);
 evolvedFunction = TranslateChromosome(bestChromosome, nVariableRegisters, constantRegisters, cMax);

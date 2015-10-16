@@ -8,9 +8,11 @@ cutsInvalid = true;
 while cutsInvalid
   cutsInParent1 = sort(randi(nInstructions1+1,[2 1])-1);
   cutsInParent2 = sort(randi(nInstructions2+1,[2 1])-1);
-  % TO FIX
-  if (diff(cutsInParent1) ~= 0 || diff(cutsInParent2) ~= nInstructions2) && (diff(cutsInParent2) ~= 0 || diff(cutsInParent1) ~= nInstructions1)
-    cutsInvalid = false;
+  if ~(diff(cutsInParent1) == 0 && diff(cutsInParent2) == nInstructions2)
+    % and viceversa
+    if ~(diff(cutsInParent2) == 0 && diff(cutsInParent1) == nInstructions1)
+      cutsInvalid = false;
+    end
   end
 end
   
@@ -26,6 +28,14 @@ firstPortion = parent2(1:cutsInParent2(1),:);
 secondPortion = parent1(cutsInParent1(1)+1:cutsInParent1(2),:);
 thirdPortion = parent2(cutsInParent2(2)+1:end,:);
 newChromosome2 = [firstPortion; secondPortion; thirdPortion];
+
+error = false;
+if isempty(newChromosome1) || isempty(newChromosome2)
+    error = true;
+end
+if any(newChromosome1(:) ==0) || any(newChromosome2(:) ==0)
+  error = true;
+end
 
 end
 
