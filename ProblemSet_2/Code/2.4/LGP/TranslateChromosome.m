@@ -8,7 +8,6 @@ combinedRegisters = [variableRegisters, sym(constantRegisters)];
 nInstructions = size(chromosome,1);
 
 for iInstruction = 1:nInstructions
-  % decode and evaluate chromosome
   
   idOperand1 = chromosome(iInstruction,3);
   tmpOperand1 = combinedRegisters(idOperand1);

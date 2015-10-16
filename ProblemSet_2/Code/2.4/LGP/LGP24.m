@@ -1,21 +1,19 @@
-%LGP24
-clear
-close all
+%% LGP24
+clear; clc; close all;
 
 %% Parameters
 populationSize = 100;
-numberOfGenerations = 10000;
+numberOfGenerations = 5000;
 tournamentSize = 5;
 tournamentSelectionParameter = 0.75;
-crossoverProbability = 0.33;
-mutationProbability = 0.03;
+crossoverProbability = 0.2;
+mutationProbability = 0.01;
 elitismCopies = 1;
-outputFileName = 'run10000_033_003.mat';
 
-nVariableRegisters = 3; % M
-nConstantRegisters = 3; % N
+nVariableRegisters = 3;
+nConstantRegisters = 3;
 constantRegisters = [1 3 -1];
-minNumberOfInstructions = 5; % use at least 3
+minNumberOfInstructions = 5;
 maxNumberOfInstructions = 25;
 cMax = 1e10;
 
@@ -23,14 +21,14 @@ cMax = 1e10;
 functionData = LoadFunctionData;
 xData = functionData(:,1);
 yData = functionData(:,2);
-population = InitializePopulation(populationSize, minNumberOfInstructions,...
+population = InitialisePopulation(populationSize, minNumberOfInstructions,...
   maxNumberOfInstructions, nVariableRegisters, nConstantRegisters);
 fitness = zeros(populationSize,1);
 minError = zeros(numberOfGenerations,1);
 maximumFitness = zeros(numberOfGenerations,1);
-% errorPlot = animatedline;
 
 % Main LGP loop
+h = waitbar(0,'Fitting data with LGP - please wait...');
 for iGeneration = 1:numberOfGenerations
   
   %% Evaluation  
@@ -41,10 +39,13 @@ for iGeneration = 1:numberOfGenerations
     fitness(iChromosome) = 1/functionError;
   end
   [maximumFitness(iGeneration), iBestChromosome] = max(fitness);
-  bestChromosome = population(iBestChromosome).Chromosome;
   
-  %% Update error
   minError(iGeneration) = 1/maximumFitness(iGeneration);
+  if iGeneration > 1 && minError(iGeneration) < minError(iGeneration-1)
+    clc
+    fprintf('\nBetter fitting function found at generation %i (error: %4.5f)',...
+      iGeneration, minError(iGeneration));
+  end
   
   %% Tournament selection and 2-pt crossover
   tempPopulation = population;
@@ -76,14 +77,21 @@ for iGeneration = 1:numberOfGenerations
   end
   
   %% Elitism
-  tempPopulation = InsertBestIndividual(tempPopulation, bestChromosome, ...
-    elitismCopies);
+  for iElite=1:elitismCopies
+    tempPopulation(iElite) = population(iBestChromosome);    
+  end
 
   population = tempPopulation;
 
+  waitbar(iGeneration/numberOfGenerations,h);
 end
+close(h);
 
+bestChromosome = population(iBestChromosome).Chromosome;
 finalMinError = minError(end);
 evolvedFunction = TranslateChromosome(bestChromosome, nVariableRegisters, constantRegisters, cMax);
-save(outputFileName)
+evolvedFunction = matlabFunction(evolvedFunction);
+clc
+fprintf('\n\nError of best fitting function found: %4.5f\n\n',finalMinError);
+disp('Function saved in function handle "evolvedFunction".');
 

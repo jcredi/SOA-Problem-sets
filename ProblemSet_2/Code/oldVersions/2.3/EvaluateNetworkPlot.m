@@ -1,4 +1,4 @@
-function networkFitness = EvaluateNetwork(neuralNetwork, iDataSet)
+function networkFitness = EvaluateNetworkPlot(neuralNetwork, iDataSet)
 %EvaluateNetwork
 
 % Truck model parameters
@@ -17,8 +17,9 @@ initialGear = 7;
 initialPosition = 0;
 finalPosition = 1000;
 initialPedalPressure = 0;
+bonusFitness = 1;
 beta = 1;
-activationFunction = @(x) 1./(1+exp(-beta*x));
+activationFunction = @(x) 1./(1+exp(-beta.*x));
 engineBreakMultipliers = [7.0, 5.0, 4.0, 3.0, 2.5, 2.0, 1.6, 1.4, 1.2, 1.0];
 g = 9.8067;
 
@@ -55,6 +56,8 @@ for iSlope = 1:nSlopes
     newTemperature = UpdateBrakeTemperature(brakeTemperature(iStep), timeStep, ...
       ambientTemperature, coolingConstant, heatingConstant, pedalPressure(iStep));
     if newTemperature > maxTemperature
+      %fprintf('Slope %i of dataset %i failed (maximum temperature reached).\n',iSlope, iDataSet);
+      isTruckOk = false;
       break
     end
     
@@ -62,27 +65,39 @@ for iSlope = 1:nSlopes
       maxTemperature, pedalPressure(iStep), truckMass, gear(iStep), ...
       engineBreakConstant, engineBreakMultipliers, g);
     newSpeed = speed(iStep) + timeStep*acceleration;
-    if newSpeed > maxSpeed || newSpeed < 0
+    if newSpeed > maxSpeed
+      %fprintf('Slope %i of dataset %i failed (maximum speed reached).\n',iSlope, iDataSet);
+      isTruckOk = false;
+      break
+    elseif newSpeed < 0
+      bonusForCompletion = 0.5;
+      %fprintf('Slope %i of dataset %i failed (truck stopped!!).\n',iSlope, iDataSet);
       break
     end
   
     newPosition = position(iStep) + timeStep*newSpeed;
     if newPosition > finalPosition
+      %fprintf('Slope %i of dataset %i completed.\n',iSlope, iDataSet);
+      bonusFitness = 2; % network takes a fitness bonus for slope completion
       break
     end
   
     newSlopeAngle = GetSlopeAngle(newPosition, iSlope, iDataSet);
     if newSlopeAngle > maxSlope
+      %fprintf('Slope %i of dataset %i invalid. Check!\n',iSlope, iDataSet);
       break
     end
   
+    % If everything is fine, update output vectors
     brakeTemperature(iStep+1) = newTemperature;
     speed(iStep+1) = newSpeed;
     position(iStep+1) = newPosition;
     slopeAngle(iStep+1) = newSlopeAngle;
   
-    [newPedalPressure, requestedGear] = RunFFNN(neuralNetwork, newSpeed/maxSpeed, ...
-      newSlopeAngle/maxSlope, newTemperature/maxTemperature, activationFunction);
+    % Now set new pressure and gear
+    [newPedalPressure, requestedGear] = RunFFNN(neuralNetwork,...
+      newSpeed/maxSpeed, newSlopeAngle/maxSlope, ...
+      newTemperature/maxTemperature, activationFunction);
     pedalPressure(iStep+1) = newPedalPressure;
     
     if (requestedGear ~= 0) && (time - lastGearChange >= 2)
@@ -100,12 +115,12 @@ for iSlope = 1:nSlopes
     end
   end % end truck run
 
-  fitnessInSlopes(iSlope) = sqrt(mean(speed))*position(end);
-figureHandle = PlotData(position, pedalPressure, gear, speed, ...
+  fitnessInSlopes(iSlope) = bonusFitness*sqrt(mean(speed))*position(end);
+  figureHandle = PlotData(position, pedalPressure, gear, speed, ...
     brakeTemperature);
   pause;
   close all;
-end % end loop over slopes
+end % end loop over different slopes
 
 networkFitness = mean(fitnessInSlopes);
 

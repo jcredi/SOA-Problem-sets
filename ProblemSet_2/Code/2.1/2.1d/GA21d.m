@@ -1,6 +1,7 @@
 %GA21d
 clear
 close all
+clc
 
 % Data loading
 cityLocation = LoadCityLocations;

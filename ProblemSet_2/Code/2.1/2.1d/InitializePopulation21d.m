@@ -32,6 +32,10 @@ for iChromosome = 1:populationSize
   for i = 1:nInitialSwapMutations % some random swap mutations
     iSwap1 = randi(nNodes);  
     iSwap2 = randi(nNodes);
+    while iSwap1 == iSwap2
+      iSwap1 = randi(nNodes);  
+      iSwap2 = randi(nNodes);   
+    end
     tmpSwap = population(iChromosome,iSwap1);
     population(iChromosome,iSwap1) = population(iChromosome,iSwap2);
     population(iChromosome,iSwap2) = tmpSwap;

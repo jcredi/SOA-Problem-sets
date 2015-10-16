@@ -3,7 +3,7 @@ function invadedPopulation = InsertBestIndividual(population, ...
 
 invadedPopulation = population;
 for i = 1:numberOfCopies
-  invadedPopulation(i).Chromosome = bestChromosome;
+  invadedPopulation(i,:) = bestChromosome;
 end
 
 end

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.23)  16 OCT 2015 12:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.23)  16 OCT 2015 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -452,20 +452,20 @@ Package: cases 2002/05/02 ver 2.5
 (./ProblemSet2_Report_JC.aux)
 \openout1 = `ProblemSet2_Report_JC.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -505,7 +505,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 68.
+Package hyperref Info: Link coloring OFF on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -515,9 +515,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count151
 )
-LaTeX Info: Redefining \ref on input line 68.
-LaTeX Info: Redefining \pageref on input line 68.
-LaTeX Info: Redefining \nameref on input line 68.
+LaTeX Info: Redefining \ref on input line 69.
+LaTeX Info: Redefining \pageref on input line 69.
+LaTeX Info: Redefining \nameref on input line 69.
 
 (./ProblemSet2_Report_JC.out) (./ProblemSet2_Report_JC.out)
 \@outlinefile=\write4
@@ -559,16 +559,16 @@ LaTeX Info: Redefining \nameref on input line 68.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count152
-LaTeX Font Info:    Try loading font information for U+msa on input line 71.
+LaTeX Font Info:    Try loading font information for U+msa on input line 72.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+LaTeX Font Info:    Try loading font information for U+msb on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 71.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -581,88 +581,97 @@ Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 File: Figures/2b_minpathLength.pdf Graphic file (type pdf)
 
 <use Figures/2b_minpathLength.pdf>
-Package pdftex.def Info: Figures/2b_minpathLength.pdf used on input line 98.
+Package pdftex.def Info: Figures/2b_minpathLength.pdf used on input line 100.
 (pdftex.def)             Requested size: 225.21626pt x 210.5527pt.
 
 <Figures/2b_pathPlot.pdf, id=14, 606.265pt x 602.25pt>
 File: Figures/2b_pathPlot.pdf Graphic file (type pdf)
 
 <use Figures/2b_pathPlot.pdf>
-Package pdftex.def Info: Figures/2b_pathPlot.pdf used on input line 104.
+Package pdftex.def Info: Figures/2b_pathPlot.pdf used on input line 106.
 (pdftex.def)             Requested size: 225.21626pt x 223.72958pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.116 A
-       fter experimenting with the parameters, it was found that using a lar...
+l.118 A
+       fter experimenting with several parameter sets, it was found that usi...
 [1 <./Figures/2b_minpathLength.pdf> <./Figures/2b_pathPlot.pdf>]
-<Figures/2c_pathPlot.pdf, id=41, 606.265pt x 602.25pt>
+<Figures/2c_pathPlot.pdf, id=42, 606.265pt x 602.25pt>
 File: Figures/2c_pathPlot.pdf Graphic file (type pdf)
 
 <use Figures/2c_pathPlot.pdf>
-Package pdftex.def Info: Figures/2c_pathPlot.pdf used on input line 120.
+Package pdftex.def Info: Figures/2c_pathPlot.pdf used on input line 122.
 (pdftex.def)             Requested size: 225.21626pt x 223.72958pt.
 
-<Figures/2d_minpathLength.pdf, id=43, 697.60625pt x 634.37pt>
+<Figures/2d_minpathLength.pdf, id=44, 697.60625pt x 634.37pt>
 File: Figures/2d_minpathLength.pdf Graphic file (type pdf)
 
 <use Figures/2d_minpathLength.pdf>
-Package pdftex.def Info: Figures/2d_minpathLength.pdf used on input line 134.
+Package pdftex.def Info: Figures/2d_minpathLength.pdf used on input line 136.
 (pdftex.def)             Requested size: 237.73294pt x 216.18628pt.
 
-<Figures/2d_pathPlot.pdf, id=44, 606.265pt x 602.25pt>
+<Figures/2d_pathPlot.pdf, id=45, 606.265pt x 602.25pt>
 File: Figures/2d_pathPlot.pdf Graphic file (type pdf)
 
 <use Figures/2d_pathPlot.pdf>
-Package pdftex.def Info: Figures/2d_pathPlot.pdf used on input line 140.
+Package pdftex.def Info: Figures/2d_pathPlot.pdf used on input line 142.
 (pdftex.def)             Requested size: 237.73294pt x 236.16309pt.
- [2 <./Figures/2c_pathPlot.pdf>]
-Missing character: There is no â in font cmr12!
-Missing character: There is no ˆ in font cmr12!
-Missing character: There is no ’ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no ˆ in font cmr12!
-Missing character: There is no ’ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no ˆ in font cmr12!
-Missing character: There is no ’ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no ˆ in font cmr12!
-Missing character: There is no ’ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no ˆ in font cmr12!
-Missing character: There is no ’ in font cmr12!
- [3 <./Figures/2d_minpathLength.pdf> <./Figures/2d_pathPlot.pdf>]
-Missing character: There is no â in font cmr12!
-Missing character: There is no ˆ in font cmr12!
-Missing character: There is no ’ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no ˆ in font cmr12!
-Missing character: There is no ’ in font cmr12!
+ [2 <./Figures/2c_pathPlot.pdf>] [3 <./Figures/2d_minpathLength.pdf> <./Figures
+/2d_pathPlot.pdf>]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 195.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 197.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 195.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 218.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 197.
  [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 218.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 228.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 228.
+
+<Figures/3_fitness.pdf, id=94, 931.48pt x 574.145pt>
+File: Figures/3_fitness.pdf Graphic file (type pdf)
+
+<use Figures/3_fitness.pdf>
+Package pdftex.def Info: Figures/3_fitness.pdf used on input line 250.
+(pdftex.def)             Requested size: 275.26772pt x 169.66917pt.
+ [5]
+<Figures/3_performance.pdf, id=102, 1163.34625pt x 708.6475pt>
+File: Figures/3_performance.pdf Graphic file (type pdf)
+
+<use Figures/3_performance.pdf>
+Package pdftex.def Info: Figures/3_performance.pdf used on input line 262.
+(pdftex.def)             Requested size: 500.484pt x 304.87468pt.
+ [6 <./Figures/3_fitness.pdf> <./Figures/3_performance.pdf>] <Figures/4_fit.pdf
+, id=124, 846.16125pt x 543.02875pt>
+File: Figures/4_fit.pdf Graphic file (type pdf)
+
+<use Figures/4_fit.pdf>
+Package pdftex.def Info: Figures/4_fit.pdf used on input line 317.
+(pdftex.def)             Requested size: 450.43253pt x 289.06332pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 322.
+ [7] [8 <./Figures/4_fit.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 322.
 
 (./ProblemSet2_Report_JC.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 218.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 218.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 322.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 322.
 Package rerunfilecheck Info: File `ProblemSet2_Report_JC.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 218.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 322.
  ) 
 Here is how much of TeX's memory you used:
- 10241 strings out of 494976
- 150518 string characters out of 6180006
- 289081 words of memory out of 5000000
- 13273 multiletter control sequences out of 15000+600000
- 21851 words of font info for 85 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 42i,10n,40p,742b,502s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 10291 strings out of 494976
+ 151380 string characters out of 6180006
+ 291081 words of memory out of 5000000
+ 13305 multiletter control sequences out of 15000+600000
+ 22019 words of font info for 86 fonts, out of 8000000 for 9000
+ 37 hyphenation exceptions out of 8191
+ 42i,14n,40p,906b,502s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/shar
@@ -679,11 +688,12 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on ProblemSet2_Report_JC.pdf (5 pages, 288406 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on ProblemSet2_Report_JC.pdf (9 pages, 492882 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 209 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
